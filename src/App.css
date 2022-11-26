@@ -1,3 +1,4 @@
+ /*Root App component */
 .App{
   display: flex ;
   height:100%;
@@ -9,14 +10,14 @@
 .Toc{
   flex-direction: row;
   flex:0.2;
-  background-color: lightskyblue ;
+  background-color: #400000   ;
   
 }
 
 .Content{
   flex-direction: row;
   flex:0.79;
-  background-image: linear-gradient(270deg, rgba(76, 175, 80, 1) 0%, rgba(49, 220, 255, 1) 100%);
+  background-image: linear-gradient(270deg, #5D4954 0%, #FFA69E 100%);
 }
 
 .WhiteSpace{
@@ -24,33 +25,68 @@
   background-image: linear-gradient(to top right, white, #afffff)
 }
 
+ /* Card component*/
 .Card{
-  display:flex;
-  flex-flow: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  height:100px;
-  width:100%;
-  background-image: linear-gradient(270deg, rgba(0, 255, 235, 1) 0%, rgba(7, 58, 187, 1) 100%) ;
+  text-align: center;
+  height:10%;
+  width:75%;
+  background-color: #660099;
   box-shadow: 0 0 .5rem rgba(0,0,255, .4);
+  text-shadow: 0 0 .3rem rgba(0,0,0,.4);
   color:#fff;
   min-height: 10vh;
   border:2px solid black ;
   border-radius: 1rem;
-  margin:1rem 0;
-  text-shadow: 0 0 .3rem rgba(0,0,0,.4);
-  opacity:1;
+  margin:1rem;
+  
 }
 
 .Card:hover{
   opacity: 0.6;
 }
 
+.Card:nth-child(even){
+  background: #FFCC66;
+}
+ /* Content and card*/
 h1{
   font-family: Blippo, fantasy;
-  
+  align-items: center;
+  text-align: center;
+  justify-content: "center";
   
 }
 h2{
   font-family: Snell Roundhand, cursive;
+}
+  
+.ScrollableDiv{
+  display: flex;
+  flex-direction: column;
+  overflow:scroll;
+  flex:0.2;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  height:40%;
+  width:20%;
+  background-color: #5D4954;
+  scroll-snap-type: y mandatory;
+  scroll-snap-align:start;
+}
+.ScrollableDiv div{
+ 
+  display: flex;
+  height:10%;
+  background-color: white;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
 }
