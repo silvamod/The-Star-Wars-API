@@ -1,0 +1,30 @@
+.App{
+  display: flex ;
+  height:100%;
+  width:100%;
+  min-height: 100vh;
+  
+}
+
+.Toc{
+  flex-direction: row;
+  flex:0.3;
+  background-color: whitesmoke ;
+  
+}
+
+.Content{
+  flex-direction: row;
+  flex:0.7;
+  background-color: blue;
+}
+
+.Card{
+  height:10%;
+  width:100%;
+  min-height: 10vh;
+  border:2px solid  ;
+  opacity: 0.8;
+  
+
+}
