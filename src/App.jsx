@@ -38,6 +38,7 @@ function App() {
       <div className='Toc'>
         <Cards data = {data} setcurIndex = {setcurIndex}/>
       </div>
+      <div className='WhiteSpace'></div>
       <div className='Content'>
         <Content data = {data} curIndex = {curIndex}/>
       </div>

@@ -41,8 +41,8 @@ export default function Content(props) {
     if(props.data)
   return (
     <>
-        <div style={{fontSize:25,fontWeight:'bold',}}>{props.data.results[props.curIndex].title}</div>
-        <div>{props.data.results[props.curIndex].opening_crawl}</div>
+        <h1 style={{fontSize:25,fontWeight:'bold'}}>{props.data.results[props.curIndex].title}</h1>
+        <h2>{props.data.results[props.curIndex].opening_crawl}</h2>
         <div onClick={() => {AddToFavourites(props.curIndex)}}>{favouriteFlag}</div>
     </>
   ) 
