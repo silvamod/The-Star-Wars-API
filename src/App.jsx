@@ -7,7 +7,7 @@ import Content from './Content'
 function App() {
   const [data, setData] = useState()
   const [curIndex, setcurIndex] = useState(0)
-
+  const [isLoading, setisLoading] = useState(false)
   const apiUrl = "https://swapi.dev/api/films/"
 
   useEffect(() => {
@@ -24,6 +24,7 @@ function App() {
       .then(
         (result) => {
           setData(result)
+          setisLoading(true)
           console.log(result)
           }) 
         ,
@@ -40,7 +41,7 @@ function App() {
       </div>
       <div className='WhiteSpace'></div>
       <div className='Content'>
-        <Content data = {data} curIndex = {curIndex}/>
+        <Content data = {data} curIndex = {curIndex} isLoading = {isLoading}/>
       </div>
     </div>
   )

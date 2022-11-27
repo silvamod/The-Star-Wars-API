@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import Scrollable from './Scrollable'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function Content(props) {
     var favourites = JSON.parse(localStorage.getItem('favourites'));
@@ -33,7 +36,6 @@ export default function Content(props) {
 
     }
     function setFavourite(favBool){
-        console.log("asdasd")
         if(favBool){
             setFavouriteMessage('Favourite!')
         } else {
@@ -50,9 +52,9 @@ export default function Content(props) {
  
     }, [props.curIndex])
     
-
-    if(props.data)
-  return (
+return(
+<div>
+{props.isLoading ?
     <>
         <h1 style={{fontSize:25,fontWeight:'bold'}}>{props.data.results[props.curIndex].title}</h1>
         <h2>{props.data.results[props.curIndex].opening_crawl}</h2>
@@ -62,13 +64,20 @@ export default function Content(props) {
         <br/>
         <div onClick={() => {AddToFavourites(props.curIndex)}}>{FavouriteMessage}</div>
         <br/><br/><br/><br/>
-        <div className='ScrollableDiv'>
-
-    <div>adwqdq</div>  <br/><div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  
-    <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>  <div>adwqdq</div>
-
+        <div className='row'>
+        
+        <Scrollable data={props.data.results[props.curIndex].characters} curIndex = {props.curIndex} type={0} header={'Cast'}/>
+        <Scrollable data={props.data.results[props.curIndex].planets} curIndex = {props.curIndex} type={1} header={'Planets'}/>
+        <Scrollable data={props.data.results[props.curIndex].species} curIndex = {props.curIndex} type={2} header={'Species'}/>
+        <Scrollable data={props.data.results[props.curIndex].starships} curIndex = {props.curIndex} type={3} header={'StarShips'}/>
         </div>
+
+        
     </>
-  ) 
-  else return(<></>)
+   :  
+   <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',alignContent:'center',height:'100vh',width:'100%' }}>
+      <CircularProgress />
+    </Box>}
+    </div>
+    )
 }
