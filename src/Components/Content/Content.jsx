@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import ScrollableDiv from '../Scrollable/ScrollableDiv'
-import './App.css'  
+import './content.css'  
 import IconButton from '@mui/material/IconButton';
 import StarIcon from '@mui/icons-material/Star'
 import StarOutLineOutLinedIcon from '@mui/icons-material/StarOutLineOutLined'
@@ -18,6 +18,11 @@ export default function Content(props) {
     const director = props.MoviesData.results[props.curIndex].director
     const producer = props.MoviesData.results[props.curIndex].producer
     const currentMovie = props.MoviesData.results[props.curIndex]
+    const CastType = 'cast'
+    const PlanetsType = 'planets'
+    const SpeciesType = 'species'
+    const StarshipsType = 'starships'
+    const VehiclesType = 'vehicles'
 
     function saveFavourites(){
         localStorage.setItem(StorageFavourite, JSON.stringify(favourites));
@@ -72,18 +77,18 @@ return(
                 </IconButton>
             </div>
         </div>
-
+        
         <div className='row'>
             Cast
-            <ScrollableDiv ScroData={currentMovie.characters} curIndex = {props.curIndex} type={0} seterrorState= {props.seterrorState}/>
+            <ScrollableDiv ScroData={currentMovie.characters} curIndex = {props.curIndex} type={CastType} seterrorState= {props.seterrorState}/>
             Planets
-            <ScrollableDiv ScroData={currentMovie.planets} curIndex = {props.curIndex} type={1} seterrorState= {props.seterrorState}/>
+            <ScrollableDiv ScroData={currentMovie.planets} curIndex = {props.curIndex} type={PlanetsType} seterrorState= {props.seterrorState}/>
             Species
-            <ScrollableDiv ScroData={currentMovie.species} curIndex = {props.curIndex} type={2} seterrorState= {props.seterrorState}/>
+            <ScrollableDiv ScroData={currentMovie.species} curIndex = {props.curIndex} type={SpeciesType} seterrorState= {props.seterrorState}/>
             Starships
-            <ScrollableDiv ScroData={currentMovie.starships} curIndex = {props.curIndex} type={3} seterrorState= {props.seterrorState}/>
+            <ScrollableDiv ScroData={currentMovie.starships} curIndex = {props.curIndex} type={StarshipsType} seterrorState= {props.seterrorState}/>
             Vehicles
-            <ScrollableDiv ScroData={currentMovie.vehicles} curIndex = {props.curIndex} type={4} seterrorState= {props.seterrorState}/>
+            <ScrollableDiv ScroData={currentMovie.vehicles} curIndex = {props.curIndex} type={VehiclesType} seterrorState= {props.seterrorState}/>
         </div>
 
     </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import ScrollableElement from './ScrollableElement'
-import './App.css'
+import './scrollable.css'
 export default function Scrollable(props) {
   return (
     <div className='ScrollableDiv'> 

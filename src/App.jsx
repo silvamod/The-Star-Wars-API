@@ -29,12 +29,10 @@ function App() {
           (result) => {
             setisLoading(true)
             setMoviesData(result)
-            console.log(result)
           }) 
           ,
           (error) => {
             seterrorState(true)
-            console.log("userLike err get=", error);
           };
       }
   }, [])
