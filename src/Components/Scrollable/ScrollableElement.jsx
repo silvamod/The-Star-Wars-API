@@ -1,12 +1,16 @@
 import React from 'react'
 import { useState,useEffect,useRef } from 'react'
+import './App.css'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 export default function ScrollableElement(props) {
     const [Data, setData] = useState()
     const effectRan = useRef(false)
     useEffect(() => {
         if(effectRan.current === false){   
       
-        fetch(props.data, {
+        fetch(props.ScroData, {
           method: 'GET',
           headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8',
@@ -70,8 +74,8 @@ if(Data && props.type == 0 )
         <div>Passengers: {Data.passengers}</div>
     </div>
   )
-
-
   else
-  return(<></>)
+  return(     <Box sx={{ display: 'flex',height:'200px',width:'200px'}}>
+  <CircularProgress />
+</Box>)
 }

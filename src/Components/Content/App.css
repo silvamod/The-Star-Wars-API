@@ -1,0 +1,24 @@
+.Content{
+    flex-direction: row;
+    flex:0.79;
+    background-image: linear-gradient(270deg, #5D4954 0%, #FFA69E 100%);
+  }
+
+h1{
+    font-family: Blippo, fantasy;
+    align-items: center;
+    text-align: center;
+    justify-content: "center";
+    font-size:25;
+    font-weight:'bold';
+    
+  }
+  
+h2{
+    font-family: Snell Roundhand, cursive;
+  }
+.row{
+    display:flex;
+    align-items:flex-start;
+    
+  }

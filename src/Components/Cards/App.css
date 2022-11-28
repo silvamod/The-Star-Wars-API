@@ -1,0 +1,37 @@
+ /* Card component*/
+ .Card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height:10%;
+    width:75%;
+    offset: 10%;
+    background-color: black;
+    box-shadow: 0 0 .5rem rgba(252, 252, 252, 0.966);
+    text-shadow: 0 0 .3rem rgba(0,0,0,.4);
+    color:#FFFFFF;
+    min-height: 10vh;
+    border:1px solid white ;
+    border-radius: 1rem;
+    margin:1rem;
+    
+  }
+  
+  .Card:hover{
+    opacity: 0.6;
+  }
+  
+  
+   /* Content and card*/
+  h1{
+    font-family: Blippo, fantasy;
+    align-items: center;
+    text-align: center;
+    justify-content: "center";
+    
+  }
+  h2{
+    font-family: Snell Roundhand, cursive;
+  }
+  
