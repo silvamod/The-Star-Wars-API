@@ -1,9 +1,7 @@
 import { useState,useEffect ,useRef} from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import Cards from './Components/Cards/Cards'
 import Content from './Components/Content/Content'
-import getRequest from './ApiUtils'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 function App() {
@@ -41,8 +39,6 @@ function App() {
       }
   }, [])
   
-
-  
   return (
     errorState ? 
       <div>Error fetching data</div>
@@ -58,11 +54,7 @@ function App() {
           </div>
         </div> 
       :
-      mainloader
-      
-      
-
+        mainloader
   )
 }
-
 export default App

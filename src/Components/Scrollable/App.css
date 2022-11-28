@@ -1,47 +1,53 @@
- 
 .ScrollableDiv{
-
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center; 
-    height:400px;
-    width:100%;
-    background-color: #5D4954;
-    overflow: hidden;
-    overflow-y  : scroll;
-    background-color: rgb(105, 94, 94);
-    border:1px solid white ;
-    border-radius: 5px;
-    margin:1rem; 
+  display:flex;
+  padding-top: 5px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  height: 400px;
+  width: 1000px;
+  overflow: hidden;
+  overflow-x: scroll;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 1rem; 
     
-  }
-  .ScrollableElement{
+}
+.ScrollableElement{
+  padding: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: 	#564d4d;
+  font-size: 20px;
+  border: 2px solid black;
+}
+
+.ScrollableElement div{
+  width: 150px;
+}
+  
+::-webkit-scrollbar{
+  width:6px;
+}
+::-webkit-scrollbar-track{
+  background-color: white;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(128, 107, 128, 0.8);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(29,17,138,0.6);
+}
+.scrollLoader{
+  display: flex;
+  align-items:center;
+}
+@media only screen and (max-width: 1200px) {
+  [class*="ScrollableDiv" ] {
+    height: 200px;
+    width: 400px;
    
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    word-break: break-word;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: rgb(223, 146, 31);
-    width:80%;
-    font-size: 20px;
-    min-height: 10vh;
-    border:2px solid black ;
-    margin:1rem;
   }
-  
-  ::-webkit-scrollbar{
-    width:6px;
-  }
-  ::-webkit-scrollbar-track{
-    background-color: white;
-  }
-  ::-webkit-scrollbar-thumb{
-    background-color: rgba(219,69,219,0.8);
-  }
-  ::-webkit-scrollbar-thumb:hover{
-    background-color: rgba(29,17,138,0.6);
-  }
-  
+}

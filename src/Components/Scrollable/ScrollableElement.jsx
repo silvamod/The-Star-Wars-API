@@ -7,7 +7,12 @@ import Box from '@mui/material/Box';
 export default function ScrollableElement(props) {
     const [Data, setData] = useState()
     const effectRan = useRef(false)
-    const scrollElemLoader =  <Box sx={{ display: 'flex',height:'200px',width:'200px'}}> <CircularProgress /> </Box>
+    const scrollElemLoader =  <Box > <CircularProgress /> </Box>
+    const CastType = 0
+    const PlanetsType = 1
+    const SpeciesType = 2
+    const StarshipsType = 3
+    const VehiclesType = 4
     useEffect(() => {
         if(!effectRan.current){   
           effectRan.current = true  
@@ -37,7 +42,7 @@ export default function ScrollableElement(props) {
         }
       }, [])
 
-if(Data && props.type == 0 )
+if(Data && props.type == CastType )
   return (
     <div className='ScrollableElement'>
         <div>Name: {Data.name}</div>
@@ -47,7 +52,7 @@ if(Data && props.type == 0 )
 
     </div>
   )
-  else if(Data && props.type == 1 )
+  else if(Data && props.type == PlanetsType )
   return(
     <div className='ScrollableElement'>
         <div>Name: {Data.name}</div>
@@ -55,7 +60,7 @@ if(Data && props.type == 0 )
         <div>Population: {Data.population}</div>
     </div>
   )
-  else if(Data && props.type == 2 )
+  else if(Data && props.type == SpeciesType )
   return(
     <div className='ScrollableElement'>
         <div>Name: {Data.name}</div>
@@ -65,7 +70,7 @@ if(Data && props.type == 0 )
         <div>Language: {Data.language}</div>
     </div>
   )
-  else if(Data && props.type == 3 )
+  else if(Data && props.type == StarshipsType )
   return(
     <div className='ScrollableElement'>
         <div>Name: {Data.name}</div>
@@ -76,7 +81,7 @@ if(Data && props.type == 0 )
         <div>Passengers: {Data.passengers}</div>
     </div>
   )
-  else if(Data && props.type == 4 )
+  else if(Data && props.type == VehiclesType )
   return(
     <div className='ScrollableElement'>
         <div>Name: {Data.name}</div>
@@ -89,5 +94,9 @@ if(Data && props.type == 0 )
     </div>
   )
   else
-  return(scrollElemLoader)
+  return(
+    <div className='scrollLoader'>
+      {scrollElemLoader}
+    </div>
+    )
 }
