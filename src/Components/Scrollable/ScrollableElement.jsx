@@ -7,31 +7,33 @@ import Box from '@mui/material/Box';
 export default function ScrollableElement(props) {
     const [Data, setData] = useState()
     const effectRan = useRef(false)
+    const scrollElemLoader =  <Box sx={{ display: 'flex',height:'200px',width:'200px'}}> <CircularProgress /> </Box>
     useEffect(() => {
-        if(effectRan.current === false){   
-      
-        fetch(props.ScroData, {
-          method: 'GET',
-          headers: new Headers({
-            'Content-Type': 'application/json; charset=UTF-8',
-            'Accept': 'application/json; charset=UTF-8'
+        if(!effectRan.current){   
+          effectRan.current = true  
+          fetch(props.ScroData, {
+            method: 'GET',
+            headers: new Headers({
+              'Content-Type': 'application/json; charset=UTF-8',
+              'Accept': 'application/json; charset=UTF-8'
+            })
           })
-        })
-          .then(res => {
-                      
-            return res.json()
-            
-          })
-          .then(
-            (result) => {
-              setData(result)
-              effectRan.current = true  
-              console.log('accessed fetch')
-              }) 
-            ,
-            (error) => {
-              console.log("userLike err get=", error);
-            };
+            .then(res => {
+                        
+              return res.json()
+              
+            })
+            .then(
+              (result) => {
+                setData(result)
+                
+                console.log(props.ScroData)
+                }) 
+              ,
+              (error) => {
+                props.seterrorState(true)
+                console.log("userLike err get=", error);
+              };
         }
       }, [])
 
@@ -74,8 +76,18 @@ if(Data && props.type == 0 )
         <div>Passengers: {Data.passengers}</div>
     </div>
   )
+  else if(Data && props.type == 4 )
+  return(
+    <div className='ScrollableElement'>
+        <div>Name: {Data.name}</div>
+        <div>Model: {Data.model}</div>
+        <div>Manufacturer: {Data.manufacturer}</div>
+        <div>Cost: {Data.cost_in_credits}</div>
+        <div>Crew: {Data.crew}</div>
+        <div>Passengers: {Data.passengers}</div>
+        <div>Vehicle Class: {Data.vehicle_class}</div>
+    </div>
+  )
   else
-  return(     <Box sx={{ display: 'flex',height:'200px',width:'200px'}}>
-  <CircularProgress />
-</Box>)
+  return(scrollElemLoader)
 }

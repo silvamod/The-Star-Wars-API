@@ -1,9 +1,3 @@
-.Content{
-    flex-direction: row;
-    flex:0.79;
-    background-image: linear-gradient(270deg, #5D4954 0%, #FFA69E 100%);
-  }
-
 h1{
     font-family: Blippo, fantasy;
     align-items: center;
@@ -11,6 +5,7 @@ h1{
     justify-content: "center";
     font-size:25;
     font-weight:'bold';
+    color:gold;
     
   }
   
@@ -19,6 +14,6 @@ h2{
   }
 .row{
     display:flex;
-    align-items:flex-start;
     
+
   }

@@ -5,7 +5,7 @@
   min-height: 100vh;
 
 }
-
+  
 .Toc{
   flex-direction: row;
   flex:0.2;
@@ -16,10 +16,11 @@
 .Content{
   flex-direction: row;
   flex:0.79;
-  background-image: linear-gradient(270deg, #5D4954 0%, #FFA69E 100%);
+  background-image: linear-gradient(270deg, #000000 0%, #666666 100%);
+  color:rgb(255, 255, 255);
 }
 
 .WhiteSpace{
   flex:0.01;
-  background-image: linear-gradient(to top right, white, #afffff)
+  background-color: #666666;
 }

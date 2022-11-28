@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect ,useRef} from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Cards from './Components/Cards/Cards'
@@ -10,49 +10,57 @@ function App() {
   const [MoviesData, setMoviesData] = useState()
   const [curIndex, setcurIndex] = useState(0)
   const [isLoading, setisLoading] = useState(false)
+  const [errorState, seterrorState] = useState(false)
   const apiUrl = "https://swapi.dev/api/films/"
-
+  const effectRan = useRef(false)
+  const mainloader = <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',alignContent:'center',height:'100vh',width:'100%' }}> <CircularProgress /></Box>
   useEffect(() => {
-    fetch(apiUrl, {
-      method: 'GET',
-      headers: new Headers({
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Accept': 'application/json; charset=UTF-8'
+    if(!effectRan.current){
+      effectRan.current = true;
+      fetch(apiUrl, {
+        method: 'GET',
+        headers: new Headers({
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Accept': 'application/json; charset=UTF-8'
+        })
       })
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(
-        (result) => {
-          setisLoading(true)
-          setMoviesData(result)
-          console.log(result)
-        }) 
-        ,
-        (error) => {
-          console.log("userLike err get=", error);
-        };
-         
+        .then(res => {
+          return res.json()
+        })
+        .then(
+          (result) => {
+            setisLoading(true)
+            setMoviesData(result)
+            console.log(result)
+          }) 
+          ,
+          (error) => {
+            seterrorState(true)
+            console.log("userLike err get=", error);
+          };
+      }
   }, [])
   
 
   
   return (
-    isLoading ? 
-      <div className="App">
-        <div className='Toc'>
-          <Cards MoviesData = {MoviesData} setcurIndex = {setcurIndex}/>
-        </div>
-        <div className='WhiteSpace'></div>
-        <div className='Content'>
-          <Content MoviesData = {MoviesData} curIndex = {curIndex} isLoading = {isLoading }/>
-        </div>
-      </div> 
-    :
-      <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',alignContent:'center',height:'100vh',width:'100%' }}>
-        <CircularProgress />
-      </Box>
+    errorState ? 
+      <div>Error fetching data</div>
+      :
+      isLoading ? 
+        <div className="App">
+          <div className='Toc'>
+            <Cards MoviesData = {MoviesData} setcurIndex = {setcurIndex}/>
+          </div>
+          <div className='WhiteSpace'></div>
+          <div className='Content'>
+            <Content MoviesData = {MoviesData} curIndex = {curIndex} isLoading = {isLoading} seterrorState= {seterrorState}/>
+          </div>
+        </div> 
+      :
+      mainloader
+      
+      
 
   )
 }

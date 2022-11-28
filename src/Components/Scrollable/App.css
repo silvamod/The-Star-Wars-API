@@ -1,15 +1,19 @@
  
 .ScrollableDiv{
-    flex-direction: row;
+
     justify-content: center;
     align-items: center;
     align-content: center;
     text-align: center; 
     height:400px;
-    width:200px;
+    width:100%;
     background-color: #5D4954;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y  : scroll;
+    background-color: rgb(105, 94, 94);
+    border:1px solid white ;
+    border-radius: 5px;
+    margin:1rem; 
     
   }
   .ScrollableElement{

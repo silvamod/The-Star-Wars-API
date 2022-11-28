@@ -2,10 +2,13 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import Scrollable from '../Scrollable/Scrollable'
 import './App.css'  
+import IconButton from '@mui/material/IconButton';
+import StarIcon from '@mui/icons-material/Star'
+import StarOutLineOutLinedIcon from '@mui/icons-material/StarOutLineOutLined'
 
 export default function Content(props) {
     var favourites = JSON.parse(localStorage.getItem('favourites'));
-    const [FavouriteMessage, setFavouriteMessage] = useState('Add To Favourites')
+    const [isFavourite, setisFavourite] = useState(false)
     const notFavourited = false;
     const Favourited = true;
     const title = props.MoviesData.results[props.curIndex].title
@@ -21,9 +24,9 @@ export default function Content(props) {
 
     function setFavourite(favBool){
         if(favBool){
-            setFavouriteMessage('Favourite!')
+            setisFavourite(Favourited)
         } else {
-            setFavouriteMessage('Add to favourites')
+            setisFavourite(notFavourited)
         }
     }
 
@@ -52,36 +55,42 @@ export default function Content(props) {
 
     useEffect(() => {
       if( favourites && (favourites.find(i => i == props.curIndex) + 1) ){
-        setFavouriteMessage('Favourite!')
+        setFavourite(true)
       } else {
-        setFavouriteMessage('Add to favourites')
+        setFavourite(false)
       }
  
     }, [props.curIndex])
     
 return(
-<div>
-{
-    <>
+    <div>
         <h1>{title}</h1>
         <h2>{opening_crawl}</h2>
         <div>Release Date: {release_date}</div>
         <div>Director: {director}</div>
         <div>Producer: {producer}</div>
         <br/>
-        <div onClick={() => {AddToFavourites(props.curIndex)}}>{FavouriteMessage}</div>
-        <br/><br/><br/><br/>
-        <div className='row'>
 
-        <Scrollable ScroData={currentMovie.characters} curIndex = {props.curIndex} type={0} header={'Cast'}/>
-        <Scrollable ScroData={currentMovie.planets} curIndex = {props.curIndex} type={1} header={'Planets'}/>
-        <Scrollable ScroData={currentMovie.species} curIndex = {props.curIndex} type={2} header={'Species'}/>
-        <Scrollable ScroData={currentMovie.starships} curIndex = {props.curIndex} type={3} header={'StarShips'}/>
+        <IconButton aria-label="starIcon"  onClick={() => {AddToFavourites(props.curIndex)}}>
+            {isFavourite ?
+                <StarIcon sx={{color:'gold'}} /> 
+                : 
+                <StarOutLineOutLinedIcon sx={{color:'gold'}} /> 
+            } 
+        </IconButton>
+        
+        
+
+        <br/><br/><br/><br/>
+
+        <div className='row'>
+            <Scrollable ScroData={currentMovie.characters} curIndex = {props.curIndex} type={0} header={'Cast'} seterrorState= {props.seterrorState}/>
+            <Scrollable ScroData={currentMovie.planets} curIndex = {props.curIndex} type={1} header={'Planets'} seterrorState= {props.seterrorState}/>
+            <Scrollable ScroData={currentMovie.species} curIndex = {props.curIndex} type={2} header={'Species'} seterrorState= {props.seterrorState}/>
+            <Scrollable ScroData={currentMovie.starships} curIndex = {props.curIndex} type={3} header={'StarShips'} seterrorState= {props.seterrorState}/>
+            <Scrollable ScroData={currentMovie.vehicles} curIndex = {props.curIndex} type={4} header={'Vehicles'} seterrorState= {props.seterrorState}/>
         </div>
 
-    </>
-
-    }
     </div>
     )
 }
